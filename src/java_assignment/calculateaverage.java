@@ -1,7 +1,3 @@
-   //Declare three subject marks (int) and 
-  
-   //calculate the total and average using arithmetic operators.
-
 
         package java_assignment;
 
@@ -33,5 +29,4 @@
 		System.out.println(average);
 		
 	}
-
 }
