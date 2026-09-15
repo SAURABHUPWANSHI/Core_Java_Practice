@@ -1,47 +1,58 @@
-//Declare basic salary (double) and calculate final salary 
+package java_assignment;
 
-//after adding bonus based on given condition.
+import java.util.Scanner;
 
-        package java_assignment;
+public class Salary {
 
-        import java.util.Scanner;
+    public static void main(String[] args) {
 
-        public class Salary {
+        Scanner sc = new Scanner(System.in);
 
-	    public static void main(String[]args) {
-		
-		Scanner sc = new Scanner(System.in);
-		
-		
-		double BasicSalary;
-		
-		double Bonus;
-		
-		double FinalSalary;
-				
-		System.out.println("Enter the BasicSalary");
-		
-		BasicSalary = sc. nextDouble();
-		
-		if (BasicSalary >= 50000) {
-		
-		Bonus = BasicSalary * 0.20;
-		
-	    } else if (BasicSalary>= 30000) {
-		
-		Bonus = BasicSalary * 0.10;
-		
-	    } else {
-	    	
-		Bonus = ( BasicSalary * 0.05);
-		
-	}
-		FinalSalary = BasicSalary + Bonus;
-		
-		System.out.println("BasicSalary=" + BasicSalary );
-		
-		System.out.println("Bonus="+ Bonus);
-		
-		System.out.println("FinalSalary="+ FinalSalary);	
-	}
+        while (true) {
+            System.out.println("\n--- Salary & Bonus Calculator ---");
+            System.out.println("Bonus Rules:");
+            System.out.println("- Basic Salary >= 50000 : 20% Bonus");
+            System.out.println("- Basic Salary >= 30000 : 10% Bonus");
+            System.out.println("- Basic Salary < 30000  : 5% Bonus");
+            System.out.print("\nEnter the Basic Salary (Type 'e' to exit): ");
+            
+            String input = sc.next();
+
+            if (input.equalsIgnoreCase("e")) {
+                System.out.println("Exiting the program...");
+                break;
+            }
+
+            try {
+                double basicSalary = Double.parseDouble(input);
+                double bonus = 0.0;
+                int bonusPercentage = 0;
+
+                if (basicSalary >= 50000) {
+                    bonus = basicSalary * 0.20;
+                    bonusPercentage = 20;
+                } else if (basicSalary >= 30000) {
+                    bonus = basicSalary * 0.10;
+                    bonusPercentage = 10;
+                } else {
+                    bonus = basicSalary * 0.05;
+                    bonusPercentage = 5;
+                }
+
+                double finalSalary = basicSalary + bonus;
+
+                System.out.println("\n===========================");
+                System.out.println("Basic Salary   : Rs. " + basicSalary);
+                System.out.println("Bonus Applied  : " + bonusPercentage + "%");
+                System.out.println("Bonus Amount   : Rs. " + bonus);
+                System.out.println("Final Salary   : Rs. " + finalSalary);
+                System.out.println("===========================");
+
+            } catch (Exception ex) {
+                System.out.println("Invalid input! Please enter a valid number or 'e'.");
+            }
+        }
+
+        sc.close();
+    }
 }
